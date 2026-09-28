@@ -1,0 +1,10 @@
+numpy>=1.26
+mujoco>=3.0
+openai>=1.40
+python-dotenv>=1.0
+# pybullet 为备选引擎（4合1 UI 悬浮字幕）。
+# Windows 注意：PyPI 无 cp312+ 预编译 wheel，须用 conda-forge：
+#   conda install -p .venv312 -c conda-forge pybullet
+# 且本机应用控制策略可能阻止其二进制加载（见 RUN_GUIDE 故障表 #1），
+# 受阻时自动回退 MuJoCo，不影响任何功能。
+# pybullet>=3.2.6

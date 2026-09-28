@@ -1,0 +1,116 @@
+[
+  {
+    "scenario": "Late Night Comfort",
+    "keywords": ["comfort", "tired", "sad", "安抚", "疲惫", "累"],
+    "timeline": [
+      {
+        "timestamp": 0.0, "duration_s": 8.0,
+        "user_event": "User sighs and shows fatigue",
+        "fruit_fly_state": "Emotional_Comfort",
+        "neuromodulation": {"dopamine_DA": 0.3, "octopamine_OA": 0.1, "serotonin_5HT": 0.9},
+        "environmental_obstacles": [],
+        "output_response": {"speak_text": "I am here for you.", "led_rgb": [1.0, 0.6, 0.8], "led_mode": "slow_breathing"}
+      },
+      {
+        "timestamp": 8.0, "duration_s": 8.0,
+        "user_event": "User relaxes shoulders",
+        "fruit_fly_state": "Approach_Reward",
+        "neuromodulation": {"dopamine_DA": 0.8, "octopamine_OA": 0.2, "serotonin_5HT": 0.5},
+        "environmental_obstacles": [],
+        "output_response": {"speak_text": "Glad to be with you.", "led_rgb": [1.0, 0.85, 0.3], "led_mode": "steady"}
+      },
+      {
+        "timestamp": 16.0, "duration_s": 8.0,
+        "user_event": "User stops interacting",
+        "fruit_fly_state": "Grooming_Rest",
+        "neuromodulation": {"dopamine_DA": 0.1, "octopamine_OA": 0.1, "serotonin_5HT": 0.8},
+        "environmental_obstacles": [],
+        "output_response": {"speak_text": "", "led_rgb": [0.1, 0.1, 0.4], "led_mode": "dim"}
+      }
+    ]
+  },
+  {
+    "scenario": "Obstacle Alert",
+    "keywords": ["obstacle", "cup", "water", "避障", "水杯", "障碍"],
+    "timeline": [
+      {
+        "timestamp": 0.0, "duration_s": 6.0,
+        "user_event": "Lamp scans the desk",
+        "fruit_fly_state": "Vigilance_Defense",
+        "neuromodulation": {"dopamine_DA": 0.2, "octopamine_OA": 0.5, "serotonin_5HT": 0.9},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Scanning surroundings...", "led_rgb": [0.4, 0.7, 1.0], "led_mode": "steady"}
+      },
+      {
+        "timestamp": 6.0, "duration_s": 5.0,
+        "user_event": "Arm trajectory approaches the cup",
+        "fruit_fly_state": "Fear_Arousal",
+        "neuromodulation": {"dopamine_DA": 0.8, "octopamine_OA": 0.9, "serotonin_5HT": 0.2},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Watch out! Obstacle ahead.", "led_rgb": [1.0, 0.1, 0.1], "led_mode": "fast_strobe"}
+      },
+      {
+        "timestamp": 11.0, "duration_s": 8.0,
+        "user_event": "Threat cleared",
+        "fruit_fly_state": "Exploration_Seeking",
+        "neuromodulation": {"dopamine_DA": 0.5, "octopamine_OA": 0.5, "serotonin_5HT": 0.4},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Exploring your workspace.", "led_rgb": [0.3, 1.0, 0.4], "led_mode": "alt_breathing"}
+      }
+    ]
+  },
+  {
+    "scenario": "Full Day Mixed",
+    "keywords": ["mixed", "demo", "all", "混合", "全部", "演示"],
+    "timeline": [
+      {
+        "timestamp": 0.0, "duration_s": 6.0,
+        "user_event": "Morning boot, scanning",
+        "fruit_fly_state": "Vigilance_Defense",
+        "neuromodulation": {"dopamine_DA": 0.2, "octopamine_OA": 0.5, "serotonin_5HT": 0.9},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Scanning surroundings...", "led_rgb": [0.4, 0.7, 1.0], "led_mode": "steady"}
+      },
+      {
+        "timestamp": 6.0, "duration_s": 6.0,
+        "user_event": "User arrives and greets",
+        "fruit_fly_state": "Approach_Reward",
+        "neuromodulation": {"dopamine_DA": 0.8, "octopamine_OA": 0.2, "serotonin_5HT": 0.5},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Glad to be with you.", "led_rgb": [1.0, 0.85, 0.3], "led_mode": "steady"}
+      },
+      {
+        "timestamp": 12.0, "duration_s": 6.0,
+        "user_event": "Hand wave near the cup",
+        "fruit_fly_state": "Fear_Arousal",
+        "neuromodulation": {"dopamine_DA": 0.8, "octopamine_OA": 0.9, "serotonin_5HT": 0.2},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Watch out! Obstacle ahead.", "led_rgb": [1.0, 0.1, 0.1], "led_mode": "fast_strobe"}
+      },
+      {
+        "timestamp": 18.0, "duration_s": 6.0,
+        "user_event": "User works quietly",
+        "fruit_fly_state": "Exploration_Seeking",
+        "neuromodulation": {"dopamine_DA": 0.5, "octopamine_OA": 0.5, "serotonin_5HT": 0.4},
+        "environmental_obstacles": [{"id": "water_cup", "pos": [0.22, 0.10, 0.06], "size": [0.07, 0.07, 0.12]}],
+        "output_response": {"speak_text": "Exploring your workspace.", "led_rgb": [0.3, 1.0, 0.4], "led_mode": "alt_breathing"}
+      },
+      {
+        "timestamp": 24.0, "duration_s": 8.0,
+        "user_event": "User looks tired",
+        "fruit_fly_state": "Emotional_Comfort",
+        "neuromodulation": {"dopamine_DA": 0.3, "octopamine_OA": 0.1, "serotonin_5HT": 0.9},
+        "environmental_obstacles": [],
+        "output_response": {"speak_text": "I am here for you.", "led_rgb": [1.0, 0.6, 0.8], "led_mode": "slow_breathing"}
+      },
+      {
+        "timestamp": 32.0, "duration_s": 8.0,
+        "user_event": "User leaves the desk",
+        "fruit_fly_state": "Grooming_Rest",
+        "neuromodulation": {"dopamine_DA": 0.1, "octopamine_OA": 0.1, "serotonin_5HT": 0.8},
+        "environmental_obstacles": [],
+        "output_response": {"speak_text": "", "led_rgb": [0.1, 0.1, 0.4], "led_mode": "dim"}
+      }
+    ]
+  }
+]

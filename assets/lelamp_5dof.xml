@@ -1,0 +1,81 @@
+<mujoco model="lelamp_5dof_fixed">
+  <!--
+    LeLamp 5-DOF 修正版 MJCF（阶段一仿真用）
+    F1 固定基座：根 body 无 freejoint，直接焊接在 worldbody
+    F2 伺服参数以 sts3215 生效值为准：kp=17.8 / damping=0.60 / forcerange=+-3.35
+    F3 单串联链：base -> j1 -> j2 -> j3 -> j4 -> j5
+    关节限位与官方 robot.urdf 数值一致（已换算为角度）
+  -->
+  <compiler angle="degree" inertiafromgeom="true"/>
+  <option timestep="0.00417" gravity="0 0 -9.81"/>
+
+  <asset>
+    <material name="mat_base" rgba="0.20 0.20 0.25 1"/>
+    <material name="mat_arm"  rgba="0.80 0.80 0.85 1"/>
+    <material name="mat_head" rgba="0.90 0.40 0.20 1"/>
+    <material name="mat_table" rgba="0.45 0.45 0.50 1"/>
+  </asset>
+
+  <default>
+    <default class="sts3215">
+      <joint damping="0.60" frictionloss="0.052" armature="0.028"/>
+      <position kp="17.8" kv="0.0" forcerange="-3.35 3.35"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light pos="0 0 3" dir="0 0 -1" directional="true"/>
+    <geom name="table" type="plane" pos="0 0 0" size="1 1 0.1" material="mat_table"/>
+
+    <!-- 底座（固定） -->
+    <body name="base_link" pos="0 0 0.05">
+      <geom name="base_geom" type="cylinder" size="0.10 0.025" material="mat_base"/>
+
+      <!-- j1 底座偏航 360°：-5.021034~1.262151 rad -->
+      <body name="j1_link" pos="0 0 0.05">
+        <joint name="joint1_yaw" class="sts3215" type="hinge" axis="0 0 1"
+               range="-287.72 72.31"/>
+        <geom type="cylinder" size="0.035 0.025" pos="0 0 0.025" material="mat_arm"/>
+
+        <!-- j2 下臂俯仰 180°：-1.084258~2.057335 rad -->
+        <body name="lower_arm" pos="0 0 0.05">
+          <joint name="joint2_pitch" class="sts3215" type="hinge" axis="0 1 0"
+                 range="-62.13 117.89"/>
+          <geom type="cylinder" size="0.020 0.15" pos="0 0 0.15" material="mat_arm"/>
+
+          <!-- j3 上臂俯仰 180°：-2.820024~0.321569 rad -->
+          <body name="upper_arm" pos="0 0 0.30">
+            <joint name="joint3_pitch" class="sts3215" type="hinge" axis="0 1 0"
+                   range="-161.57 18.43"/>
+            <geom type="cylinder" size="0.018 0.125" pos="0 0 0.125" material="mat_arm"/>
+
+            <!-- j4 灯头翻滚 360°：-3.786540~2.496645 rad -->
+            <body name="head_roll_link" pos="0 0 0.25">
+              <joint name="joint4_roll" class="sts3215" type="hinge" axis="1 0 0"
+                     range="-216.96 143.05"/>
+              <geom type="cylinder" size="0.025 0.01" pos="0 0 0.01" material="mat_arm"/>
+
+              <!-- j5 灯头俯仰 180°：-0.853337~2.288255 rad -->
+              <body name="lamp_head" pos="0 0 0.02">
+                <joint name="joint5_pitch" class="sts3215" type="hinge" axis="0 1 0"
+                       range="-48.89 131.10"/>
+                <geom name="head_geom" type="sphere" size="0.06" pos="0.03 0 0"
+                      material="mat_head"/>
+                <site name="head_tip" pos="0.03 0 0" size="0.005" rgba="1 1 0 0"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <!-- OBSTACLES_PLACEHOLDER -->
+  </worldbody>
+
+  <actuator>
+    <position class="sts3215" name="act_j1" joint="joint1_yaw"   inheritrange="1"/>
+    <position class="sts3215" name="act_j2" joint="joint2_pitch" inheritrange="1"/>
+    <position class="sts3215" name="act_j3" joint="joint3_pitch" inheritrange="1"/>
+    <position class="sts3215" name="act_j4" joint="joint4_roll"  inheritrange="1"/>
+    <position class="sts3215" name="act_j5" joint="joint5_pitch" inheritrange="1"/>
+  </actuator>
+</mujoco>
