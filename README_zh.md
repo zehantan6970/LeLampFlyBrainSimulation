@@ -21,7 +21,7 @@
 
 ## 演示视频
 
-<video src="https://github.com/zehantan6970/LeLampFlyBrainSimulation/releases/download/demo-video/LeLamp-FlyBrain-Simulation.mp4" controls width="720"></video>
+https://github.com/user-attachments/assets/361308e9-8acd-4699-bac2-9b255cedd9b1
 
 *（38 秒解说演示——逐时间戳解说稿见 [VIDEO_DESCRIPTION.md](VIDEO_DESCRIPTION.md)。）*
 
