@@ -19,6 +19,12 @@
 
 **阶段一状态（2026-09-28）：三项验收标准全部达成**——全链路无头跑通；标定 DN 读出六状态平均跟踪误差 **0.040 rad**（较无控制基线 0.542 rad 下降 92.6%）；LLM 容错链在线（DeepSeek，约 10.5 s）与离线（Mock）均可用。
 
+## 演示视频
+
+<video src="LeLamp-FlyBrain-Simulation.mp4" controls width="720"></video>
+
+*（38 秒解说演示——逐时间戳解说稿见 [VIDEO_DESCRIPTION.md](VIDEO_DESCRIPTION.md)。）*
+
 ## 快速开始
 
 ```powershell
