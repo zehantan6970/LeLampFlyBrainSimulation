@@ -21,7 +21,7 @@ The result: a simulated LeLamp 5-DOF robot lamp (MuJoCo, kp=17.8 STS3215 servo-f
 
 ## Demo
 
-<video src="LeLamp-FlyBrain-Simulation.mp4" controls width="720"></video>
+<video src="https://github.com/zehantan6970/LeLampFlyBrainSimulation/releases/download/demo-video/LeLamp-FlyBrain-Simulation.mp4" controls width="720"></video>
 
 *(Narrated 38-second demo — timestamped script in [VIDEO_DESCRIPTION.md](VIDEO_DESCRIPTION.md).)*
 
