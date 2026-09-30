@@ -3,7 +3,8 @@
 blocked by this machine's app-control policy; PIL is allowed).
 
 All plotted numbers are measured on this machine (2026-09-28); no invented data.
-Output: docs/figures/fig1..fig4 (drawn at 2x, downscaled for anti-aliasing).
+Output: docs/figures/fig1..fig4 (drawn at 4x supersampling, saved at full
+logical resolution for crisp text).
 """
 import os
 
@@ -13,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "docs", "figures")
 os.makedirs(OUT, exist_ok=True)
 
-S = 2  # supersampling factor
+S = 4  # supersampling factor
 
 INK = "#26221C"
 SUB = "#444441"
@@ -102,16 +103,21 @@ arrow(d, 460, y0 + hh / 2, 570, y0 + hh / 2, color=BLUE)
 arrow(d, 1030, y0 + hh / 2, 1140, y0 + hh / 2, color=PURPLE)
 arrow(d, 1510, y0 + hh / 2, 1620, y0 + hh / 2, color=TEAL)
 
-# feedback loop
-arrow(d, 1805, y0 + hh, 800, 800, color=AMBER, width=3)
-arrow(d, 800, 800, 800, y0 + hh, color=AMBER, width=3)
-text_c(d, 1310 * S, 795 * S,
+# feedback loop (user-adjusted routing: thick gold right-angle path,
+# L3 bottom -> down -> horizontal -> up into L1 bottom)
+GOLD = "#E6B800"
+yb = y0 + hh          # 680, bottom edge of boxes
+yl = 780              # horizontal segment level
+d.line([1805 * S, yb * S, 1805 * S, yl * S], fill=GOLD, width=6 * S)
+d.line([1805 * S, yl * S, 800 * S, yl * S], fill=GOLD, width=6 * S)
+arrow(d, 800, yl, 800, yb, color=GOLD, width=6, head=18)
+text_c(d, 1310 * S, 812 * S,
        "closed-loop proprioception: ON/OFF joint-error sensory channels (50 Hz)",
        F(13), fill=AMBER)
 text_c(d, W * S / 2, 855 * S,
        "SNN 100 Hz internal steps  |  control 50 Hz  |  physics 240 Hz  |  zero dataset, pure simulation",
        F(12), fill=MUT)
-save(img, "fig1_architecture.png", W // S * 2 // 2, H // S * 2 // 2)
+save(img, "fig1_architecture.png", W, H)
 
 # ---------------------------------------------------------------- Figure 2
 W, H = 1920, 1040
@@ -153,7 +159,7 @@ text_c(d, W * S / 2, 990 * S,
 text_c(d, W * S / 2, 1022 * S,
        "Known limitation: current 5-HT path modulates leak only within [0.70, 0.75] - nearly decorative; Phase-2 fix planned.",
        F(12), fill=RED)
-save(img, "fig2_gamma_pathways.png", W // 2, H // 2)
+save(img, "fig2_gamma_pathways.png", W, H)
 
 # ---------------------------------------------------------------- Figure 3
 W, H = 2040, 800
@@ -175,7 +181,7 @@ box(d, 1380, y0, bw, bh, "Pillar 3\nThree-Factor Learning",
 text_c(d, W * S / 2, 720 * S,
        "No backpropagation  |  No learned connectivity  |  No dataset  |  Ablation-ready (ER / degree-preserving rewiring null models)",
        F(13), fill=MUT)
-save(img, "fig3_three_pillars.png", W // 2, H // 2)
+save(img, "fig3_three_pillars.png", W, H)
 
 # ---------------------------------------------------------------- Figure 4
 W, H = 2120, 840
@@ -276,5 +282,5 @@ for i, s_ in enumerate(sweep):
 text_c(d, (px2 + pw2 / 2) * S, (py2 + ph2 - 30) * S,
        "joint-0 (base yaw) motion range, peak-to-peak (rad)", F(12), fill=MUT)
 
-save(img, "fig4_results.png", W // 2, H // 2)
+save(img, "fig4_results.png", W, H)
 print("figures written to", OUT)

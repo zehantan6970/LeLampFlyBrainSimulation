@@ -3,7 +3,7 @@
 
 与 fig2（数值版）互补：本图用符号系数 theta=(l0,l1,g0,g1,d0,d1) 表示映射，
 这些系数正是 Phase-2 Level A（外环 CMA-ES 进化）的优化目标。
-纯 Pillow 绘制（本机 matplotlib FreeType 被策略拦截），2x 超采样抗锯齿。
+纯 Pillow 绘制（本机 matplotlib FreeType 被策略拦截），4x 超采样抗锯齿。
 
 用法：python tools/make_fig5_gamma_symbolic.py
 """
@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageFont
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    "docs", "figures", "fig5_gamma_symbolic.png")
 
-SS = 2                      # 超采样倍数
+SS = 4                      # 超采样倍数
 FW, FH = 1900, 1050         # 最终尺寸
 W, H = FW * SS, FH * SS
 
