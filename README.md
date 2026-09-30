@@ -131,7 +131,7 @@ Without keys, everything still runs via the local Mock event stream — `--mode 
 | P2-1 | Ablation matrix | mock / ER / degree-preserving-rewired graphs × ≥5 seeds, effect sizes |
 | P2-2 | Three-factor stability | Loop-delay analysis, error dead-zone, non-degenerate DA gating — converge to LMS level |
 | P2-3 | 5-HT pathway fix | Re-calibrate leak modulation beyond the decorative [0.70, 0.75] range |
-| P2-4 | Neuromodulation evolution | **Implemented** ✅ `experiments/evolve_modulation.py`: outer CMA-ES over θ = γ-mapping coefficients (LAPACK-free hand-Jacobi eigensolver), inner three-factor loop unchanged; anti-gaming constraints (fitness includes learning-speed AUC; degenerate-gate penalties). Smoke-tested; formal run pending |
+| P2-4 | Neuromodulation evolution | **Completed** ✅ Formal run done (2026-09-30, 72 evals, 12 gens × 6): negative result — AUC≈0 under all θ, 92% saturate at err=π; γ tuning cannot substitute for fixing the learning rule. Full analysis: [docs/phase2_levelA_results.md](docs/phase2_levelA_results.md) + fig6. **P2-2 is now the critical path** |
 | P2-5 | T2/T3 tasks | Obstacle approach (RRT-Connect), state-transition smoothness |
 | P2-6 | Real-robot transfer | STS3215 calibration, sim-to-real gap, human-preference data for γ fine-tuning |
 
